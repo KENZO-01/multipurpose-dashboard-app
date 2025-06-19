@@ -6,7 +6,7 @@ import { type Task, TaskCard } from "./TaskCard";
 import { cva } from "class-variance-authority";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Ellipsis, GripVertical, Plus } from "lucide-react";
+import { Ellipsis, GripVertical } from "lucide-react";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -90,7 +90,7 @@ export function BoardColumn({ column, tasks, isOverlay }: BoardColumnProps) {
           {tasks?.length}
         </Badge>
         <div className="flex-grow"> {column.title}</div>
-        <BoardColumnMenu column={column} tasks={tasks} isOverlay={isOverlay} />
+        <BoardColumnMenu />
         <Button
           variant={"ghost"}
           {...attributes}
@@ -114,7 +114,7 @@ export function BoardColumn({ column, tasks, isOverlay }: BoardColumnProps) {
   );
 }
 
-function BoardColumnMenu({column, tasks, isOverlay}: BoardColumnProps) {
+function BoardColumnMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="-ml-2 p-1 text-primary/50 h-auto relative">
