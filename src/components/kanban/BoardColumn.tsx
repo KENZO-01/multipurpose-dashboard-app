@@ -62,10 +62,11 @@ export function BoardColumn({ column, tasks, isOverlay }: BoardColumnProps) {
   const style = {
     transition,
     transform: CSS.Translate.toString(transform),
+    padding: '20px 16px 16px 16px'
   };
 
   const variants = cva(
-    "h-full min-w-[320px] max-w-full bg-primary-foreground flex flex-col flex-shrink-0 gap-0 py-3",
+    "h-full min-w-[336px] max-w-[336px] bg-primary-foreground flex flex-col flex-shrink-0 gap-0",
     {
       variants: {
         dragging: {
@@ -85,11 +86,11 @@ export function BoardColumn({ column, tasks, isOverlay }: BoardColumnProps) {
         dragging: isOverlay ? "overlay" : isDragging ? "over" : undefined,
       })}
     >
-      <CardHeader className="p-2 font-semibold  text-left flex flex-row justify-between items-center">
+      <CardHeader className="p-0 mb-3 font-semibold  text-left flex flex-row justify-between items-center">
         <Badge className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
           {tasks?.length}
         </Badge>
-        <div className="flex-grow"> {column.title}</div>
+        <div className="flex-grow text-[14px]"> {column.title}</div>
         <BoardColumnMenu />
         <Button
           variant={"ghost"}
@@ -101,8 +102,11 @@ export function BoardColumn({ column, tasks, isOverlay }: BoardColumnProps) {
           <GripVertical />
         </Button>
       </CardHeader>
-      <ScrollArea className="h-[72vh]">
-        <CardContent className="flex flex-grow flex-col gap-2 p-2">
+      <ScrollArea
+        className="h-[72vh]"
+        scrollBarClassName="h-0 w-0"
+      >
+        <CardContent className="flex flex-grow flex-col gap-4 p-0">
           <SortableContext items={tasksIds}>
             {tasks.map((task) => (
               <TaskCard key={task.id} task={task} />

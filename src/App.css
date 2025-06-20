@@ -1,42 +1,26 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.custom-scrollbar2::-webkit-scrollbar {
+  width: 0px; /* Adjust the width of the scrollbar */
+  height:0px; /* Adjust the height of the scrollbar (for horizontal scrollbar) */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Style the scrollbar track */
+.custom-scrollbar2::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light background for the track */
+  border-radius: 10px; /* Rounded corners */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Style the scrollbar thumb */
+.custom-scrollbar2::-webkit-scrollbar-thumb {
+  background: #888; /* Thumb color */
+  border-radius: 10px; /* Rounded corners */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Hover effect for scrollbar thumb */
+.custom-scrollbar2::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker thumb color on hover */
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+/* Optional: Style for the scrollbar corner (for both horizontal and vertical scrollbars) */
+.custom-scrollbar2::-webkit-scrollbar-corner {
+  background: transparent;
 }

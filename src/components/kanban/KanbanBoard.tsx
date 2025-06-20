@@ -59,6 +59,9 @@ const initialTasks: Task[] = [
     id: "task1",
     columnId: "done",
     content: "Project initiation and planning",
+    attachement: [
+      "https://api-prod-minimal-v700.pages.dev/assets/images/cover/cover-5.webp",
+    ],
   },
   {
     id: "task2",
