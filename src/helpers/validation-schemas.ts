@@ -18,6 +18,22 @@ export const loginSchema = Yup.object<FormValues>().shape({
         return emailValid || usernameValid;
       }
     ),
+  password: Yup.string().required("Password is required"),
+});
+
+export const registerSchema = Yup.object().shape({
+  email: Yup.string()
+    .required("Email is required")
+    .email("Please enter a valid email"),
+  first_name: Yup.string()
+    .required("First Name is Required")
+    .min(3, "First Name should be at least 3 characters long"),
+  last_name: Yup.string()
+    .required("Last Name is Required")
+    .min(3, "Last Name should be at least 3 characters long"),
+  username: Yup.string()
+    .required("Username is Required")
+    .min(3, "Username should be at least 3 characters long"),
   password: Yup.string()
     .required("Password is required")
     .min(8, "Password must be at least 8 characters")
@@ -28,9 +44,28 @@ export const loginSchema = Yup.object<FormValues>().shape({
       /[!@#$%^&*]/,
       "Password must contain at least one special character"
     ),
+  confirm_password: Yup.string().oneOf([Yup.ref('password')], 'Passwords must match')
 });
 
-export const registerSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email address").required("Email is required"),
-  password: Yup.string().required("Password is required"),
+export const forgotPasswordSchema = Yup.object().shape({
+  email: Yup.string()
+    .required("Email is required")
+    .email("Please enter a valid email"),
+});
+
+export const resetPasswordSchema = Yup.object().shape({
+  password: Yup.string()
+    .required("Password is required")
+    .min(8, "Password must be at least 8 characters")
+    .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .matches(/[a-z]/, "Password must contain at least one lowercase letter")
+    .matches(/[0-9]/, "Password must contain at least one number")
+    .matches(
+      /[!@#$%^&*]/,
+      "Password must contain at least one special character"
+    ),
+  confirm_password: Yup.string().oneOf(
+    [Yup.ref("password")],
+    "Passwords must match"
+  ),
 });

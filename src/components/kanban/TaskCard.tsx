@@ -109,14 +109,14 @@ export function TaskCard({ task, isOverlay }: TaskCardProps) {
           />
         )}
 
-        <div className="mt-3 break-words text-md text-slate-800">
+        <div className="mt-3 break-words text-sm text-slate-800 dark:text-white">
           {task.content}
         </div>
 
         <div className="flex justify-between items-center mt-3">
           <div className="flex items-center gap-1">
             <MessageCircleMore className="h-6 w-6" />
-            <div className="text-sm text-slate-700">6</div>
+            <div className="text-sm text-slate-700 dark:text-white">6</div>
           </div>
           <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale-0">
             <Avatar className="w-5 h-5">

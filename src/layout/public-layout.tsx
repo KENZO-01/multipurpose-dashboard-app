@@ -1,9 +1,36 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const PublicLayout = ({ children }: { children: React.ReactNode }) => {
+
+  const userTokens = useSelector((state: any) => state?.user.tokens)
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userTokens?.access) {
+      navigate('/dashboard');
+    }
+  }, [userTokens, navigate])
+
   return (
-    <div className="bg-background flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
-      <div className="w-full max-w-sm">
+    <div className="bg-primary-foreground container grid h-svh max-w-none items-center justify-center">
+      <div className="mx-auto flex w-full flex-col justify-center space-y-2 py-8 sm:w-[480px] sm:p-8">
+        <div className="mb-4 flex items-center justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="mr-2 h-6 w-6"
+          >
+            <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
+          </svg>
+          <h1 className="text-xl font-medium">Shadcn Admin</h1>
+        </div>
         {children}
       </div>
     </div>
